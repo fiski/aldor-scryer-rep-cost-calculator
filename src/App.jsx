@@ -29,14 +29,25 @@ export default function App() {
             borderBottom: '1px solid var(--cds-border-subtle)',
             padding: '1.5rem 2rem',
             marginBottom: '2rem',
+            display: 'flex',
+            alignItems: 'center',
+            gap: '1rem',
           }}
         >
+          <img
+            src="https://static.wikia.nocookie.net/wowpedia/images/b/b7/Aldor_Tabard.jpg/revision/latest?cb=20070313125052"
+            alt="Aldor Tabard"
+            style={{
+              width: '48px',
+              height: '48px',
+              borderRadius: '50%',
+              objectFit: 'cover',
+              flexShrink: 0,
+            }}
+          />
           <h1 className="cds--type-productive-heading-05" style={{ margin: 0 }}>
-            ⚔️ Aldor Rep Cost Calculator
+            Aldor Rep Cost Calculator
           </h1>
-          <p className="cds--type-body-short-01" style={{ marginTop: '0.25rem', color: 'var(--cds-text-secondary)' }}>
-            TBC Classic — Track AH prices &amp; find the cheapest path to Exalted
-          </p>
         </div>
 
         <Grid fullWidth style={{ paddingLeft: '1rem', paddingRight: '1rem' }}>
