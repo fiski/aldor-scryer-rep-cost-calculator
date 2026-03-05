@@ -45,7 +45,7 @@ export default function SettingsPanel({ settings, onChange }) {
             </Select>
             <NumberInput
               id="sr-progress"
-              label="Progress in tier"
+              label="Current reputation"
               helperText={`Rep earned so far in ${settings.startingRep?.tier ?? 'friendly'}`}
               value={settings.startingRep?.progress ?? 0}
               min={0}
