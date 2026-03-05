@@ -13,6 +13,7 @@
     "deploy": "gh-pages -d dist"
   },
   "dependencies": {
+    "@carbon/charts-react": "^1.27.2",
     "@carbon/icons-react": "^11.0.0",
     "@carbon/react": "^1.0.0",
     "@carbon/styles": "^1.0.0",
@@ -28,8 +29,8 @@
     "eslint": "^9.13.0",
     "eslint-plugin-react-hooks": "^5.0.0",
     "eslint-plugin-react-refresh": "^0.4.14",
-    "globals": "^15.11.0",
     "gh-pages": "^6.0.0",
+    "globals": "^15.11.0",
     "vite": "^6.0.5"
   }
 }

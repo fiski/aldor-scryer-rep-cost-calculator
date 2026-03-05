@@ -20,7 +20,7 @@ export default function SettingsPanel({ settings, onChange }) {
       </Heading>
       <Stack gap={5}>
         <div>
-          <p className="cds--label" style={{ marginBottom: '0.5rem', fontWeight: 600 }}>
+          <p style={{ display: 'block', marginBottom: '0.5rem', fontWeight: 600, fontSize: '0.75rem', letterSpacing: '0.32px', color: 'var(--cds-text-secondary)' }}>
             Current Reputation
           </p>
           <Stack gap={4} orientation="horizontal">
@@ -56,10 +56,10 @@ export default function SettingsPanel({ settings, onChange }) {
           </Stack>
         </div>
         <div>
-          <p className="cds--label" style={{ marginBottom: '0.5rem', fontWeight: 600 }}>
+          <p style={{ display: 'block', marginBottom: '0.5rem', fontWeight: 600, fontSize: '0.75rem', letterSpacing: '0.32px', color: 'var(--cds-text-secondary)' }}>
             Target Reputation
           </p>
-          <Stack gap={4} orientation="horizontal" style={{ alignItems: 'flex-end' }}>
+          <div style={{ display: 'grid', gridTemplateColumns: '1fr 1fr', gap: '1rem', alignItems: 'end' }}>
             <Select
               id="target-rep"
               labelText="Target standing"
@@ -74,11 +74,13 @@ export default function SettingsPanel({ settings, onChange }) {
                 />
               ))}
             </Select>
-            <p style={{ paddingBottom: '0.75rem' }}>
-              <span className="cds--label">Total rep needed: </span>
-              <strong>{totalRepNeeded(settings).toLocaleString()}</strong>
-            </p>
-          </Stack>
+            <div style={{ paddingBottom: '0.75rem' }}>
+              <p style={{ fontSize: '0.75rem', color: 'var(--cds-text-secondary)', marginBottom: '0.25rem' }}>
+                Total rep needed
+              </p>
+              <strong style={{ fontSize: '1rem' }}>{totalRepNeeded(settings).toLocaleString()}</strong>
+            </div>
+          </div>
         </div>
       </Stack>
     </Tile>

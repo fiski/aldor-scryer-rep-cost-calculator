@@ -5,6 +5,7 @@ import SettingsPanel from './components/SettingsPanel'
 import AddEntryForm from './components/AddEntryForm'
 import PriceLogTable from './components/PriceLogTable'
 import BudgetCalculator from './components/BudgetCalculator'
+import PriceHistoryCharts from './components/PriceHistoryCharts'
 
 export default function App() {
   const [entries, setEntries] = useLocalStorage('aldor_price_log', SEED_DATA)
@@ -72,6 +73,11 @@ export default function App() {
           {/* Price Log Table */}
           <Column lg={16} md={8} sm={4} style={{ marginTop: '1.5rem' }}>
             <PriceLogTable entries={entries} settings={settings} onDelete={handleDelete} />
+          </Column>
+
+          {/* Price History Charts */}
+          <Column lg={16} md={8} sm={4} style={{ marginTop: '1.5rem' }}>
+            <PriceHistoryCharts entries={entries} settings={settings} />
           </Column>
         </Grid>
       </div>

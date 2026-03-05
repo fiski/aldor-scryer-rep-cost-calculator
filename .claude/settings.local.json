@@ -3,7 +3,14 @@
     "allow": [
       "Bash(npm create:*)",
       "Bash(npm install:*)",
-      "Bash(npm run:*)"
+      "Bash(npm run:*)",
+      "WebFetch(domain:carbondesignsystem.com)",
+      "WebSearch",
+      "WebFetch(domain:charts.carbondesignsystem.com)",
+      "WebFetch(domain:stackblitz.com)",
+      "WebFetch(domain:github.com)",
+      "Bash(npm:*)",
+      "Bash(rm:*)"
     ]
   }
 }
