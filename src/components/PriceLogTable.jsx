@@ -36,10 +36,13 @@ const HEADERS = [
 export default function PriceLogTable({ entries, settings, onDelete }) {
   const sorted = [...entries].sort((a, b) => b.timestamp.localeCompare(a.timestamp))
 
+  const MOS_STACK_SIZE = 20
+
   const rows = sorted.map((entry) => {
     const calc = calcEntry(entry, settings)
     const [datePart, timePart] = entry.timestamp.split('T')
     const isMos = calc.bestDeal === 'mos'
+    const mosStacks = Math.ceil(calc.qtyMos / MOS_STACK_SIZE)
 
     return {
       id: entry.id,
@@ -52,7 +55,9 @@ export default function PriceLogTable({ entries, settings, onDelete }) {
       felArmHigh: formatGold(entry.felArm.high),
       felArmAvg: formatGold(calc.felArmAvg),
       bestDeal: isMos ? 'Mark of Sargeras' : 'Fel Armament',
-      qtyNeeded: formatNumber(isMos ? calc.qtyMos : calc.qtyFelArm),
+      qtyNeeded: isMos
+        ? `${formatNumber(calc.qtyMos)} (${mosStacks} stacks)`
+        : formatNumber(calc.qtyFelArm),
       totalCostLow: formatGold(isMos ? calc.totalMosLow : calc.totalFelArmLow),
       totalCostHigh: formatGold(isMos ? calc.totalMosHigh : calc.totalFelArmHigh),
     }

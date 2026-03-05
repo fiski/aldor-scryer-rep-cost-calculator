@@ -4,7 +4,6 @@ import { DEFAULTS, SEED_DATA } from './utils/calculations'
 import SettingsPanel from './components/SettingsPanel'
 import AddEntryForm from './components/AddEntryForm'
 import PriceLogTable from './components/PriceLogTable'
-import BestDealBanner from './components/BestDealBanner'
 import BudgetCalculator from './components/BudgetCalculator'
 
 export default function App() {
@@ -41,11 +40,6 @@ export default function App() {
         </div>
 
         <Grid fullWidth style={{ paddingLeft: '1rem', paddingRight: '1rem' }}>
-          {/* Best Deal Banner */}
-          <Column lg={16} md={8} sm={4}>
-            <BestDealBanner entries={entries} settings={settings} />
-          </Column>
-
           {/* Settings + Budget side-by-side */}
           <Column lg={8} md={4} sm={4} style={{ marginTop: '1.5rem' }}>
             <SettingsPanel settings={settings} onChange={setSettings} />
