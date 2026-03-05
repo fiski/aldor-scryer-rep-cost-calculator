@@ -1,6 +1,8 @@
+import { useRef } from 'react'
 import { Theme, Grid, Column, Stack } from '@carbon/react'
 import { useLocalStorage } from './hooks/useLocalStorage'
 import { DEFAULTS, SEED_DATA } from './utils/calculations'
+import { runMigrations } from './utils/migrations'
 import SettingsPanel from './components/SettingsPanel'
 import AddEntryForm from './components/AddEntryForm'
 import PriceLogTable from './components/PriceLogTable'
@@ -8,6 +10,12 @@ import BudgetCalculator from './components/BudgetCalculator'
 import PriceHistoryCharts from './components/PriceHistoryCharts'
 
 export default function App() {
+  const migrated = useRef(false)
+  if (!migrated.current) {
+    runMigrations()
+    migrated.current = true
+  }
+
   const [entries, setEntries] = useLocalStorage('aldor_price_log', SEED_DATA)
   const [settings, setSettings] = useLocalStorage('aldor_settings', DEFAULTS)
   const [budget, setBudget] = useLocalStorage('aldor_budget', null)

@@ -1,3 +1,5 @@
+export const STORAGE_VERSION = 1
+
 export const DEFAULTS = {
   items: {
     mos: { repEach: 25, label: 'Mark of Sargeras' },
