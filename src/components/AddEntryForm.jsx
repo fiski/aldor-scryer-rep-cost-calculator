@@ -7,7 +7,7 @@ import {
   Stack,
   TextInput,
 } from '@carbon/react'
-import { Add } from '@carbon/icons-react'
+import { Add, Time } from '@carbon/icons-react'
 import { v4 as uuidv4 } from 'uuid'
 
 function nowDateStr() {
@@ -54,7 +54,7 @@ export default function AddEntryForm({ onAdd }) {
       </Heading>
       <form onSubmit={handleSubmit}>
         <Stack gap={5}>
-          <Stack gap={4} orientation="horizontal">
+          <div style={{ display: 'grid', gridTemplateColumns: 'repeat(2, 1fr)', gap: '1rem' }}>
             <TextInput
               id="entry-date"
               labelText="Date"
@@ -62,19 +62,30 @@ export default function AddEntryForm({ onAdd }) {
               value={date}
               onChange={(e) => setDate(e.target.value)}
             />
-            <TextInput
-              id="entry-time"
-              labelText="Time"
-              type="time"
-              value={time}
-              onChange={(e) => setTime(e.target.value)}
-            />
-          </Stack>
+            <div style={{ display: 'flex', flexDirection: 'column', gap: '0.25rem' }}>
+              <TextInput
+                id="entry-time"
+                labelText="Time"
+                type="time"
+                value={time}
+                onChange={(e) => setTime(e.target.value)}
+              />
+              <Button
+                kind="ghost"
+                size="sm"
+                renderIcon={Time}
+                onClick={() => setTime(nowTimeStr())}
+                style={{ alignSelf: 'flex-start' }}
+              >
+                Use current time
+              </Button>
+            </div>
+          </div>
           <div>
             <p className="cds--label" style={{ marginBottom: '0.5rem', fontWeight: 600 }}>
               Mark of Sargeras (gold)
             </p>
-            <Stack gap={4} orientation="horizontal">
+            <div style={{ display: 'grid', gridTemplateColumns: 'repeat(2, 1fr)', gap: '1rem' }}>
               <NumberInput
                 id="mos-low"
                 label="Low"
@@ -93,13 +104,13 @@ export default function AddEntryForm({ onAdd }) {
                 allowEmpty
                 onChange={(e, { value }) => setMosHigh(value)}
               />
-            </Stack>
+            </div>
           </div>
           <div>
             <p className="cds--label" style={{ marginBottom: '0.5rem', fontWeight: 600 }}>
               Fel Armament (gold)
             </p>
-            <Stack gap={4} orientation="horizontal">
+            <div style={{ display: 'grid', gridTemplateColumns: 'repeat(2, 1fr)', gap: '1rem' }}>
               <NumberInput
                 id="felarm-low"
                 label="Low"
@@ -118,7 +129,7 @@ export default function AddEntryForm({ onAdd }) {
                 allowEmpty
                 onChange={(e, { value }) => setFelArmHigh(value)}
               />
-            </Stack>
+            </div>
           </div>
           <div>
             <Button type="submit" renderIcon={Add}>
