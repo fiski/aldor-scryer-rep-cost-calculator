@@ -1,10 +1,22 @@
 export const DEFAULTS = {
-  repNeeded: { phase1: 9305, phase2: 21000 },
   items: {
     mos: { repEach: 25, label: 'Mark of Sargeras' },
     felArm: { repEach: 350, label: 'Fel Armament' },
   },
+  startingRep: {
+    tier: 'friendly',
+    progress: 0,
+  },
+  targetRep: 'exalted',
 }
+
+export const TIER_CAPS = {
+  neutral: 3000,
+  friendly: 6000,
+  honored: 12000,
+  revered: 21000,
+}
+const ALL_TIERS = ['neutral', 'friendly', 'honored', 'revered', 'exalted']
 
 export const SEED_DATA = [
   {
@@ -22,7 +34,17 @@ export const SEED_DATA = [
 ]
 
 export function totalRepNeeded(settings) {
-  return settings.repNeeded.phase1 + settings.repNeeded.phase2
+  const sr = settings.startingRep
+  const target = settings.targetRep ?? 'exalted'
+  if (!sr?.tier) return 0
+  const currentIdx = ALL_TIERS.indexOf(sr.tier)
+  const targetIdx = ALL_TIERS.indexOf(target)
+  if (currentIdx === -1 || targetIdx === -1 || targetIdx <= currentIdx) return 0
+  let total = TIER_CAPS[sr.tier] - (sr.progress || 0)
+  for (let i = currentIdx + 1; i < targetIdx; i++) {
+    total += TIER_CAPS[ALL_TIERS[i]]
+  }
+  return Math.max(0, total)
 }
 
 export function qtyNeeded(settings) {
