@@ -78,7 +78,7 @@ export default function SettingsPanel({ settings, onChange }) {
               <p style={{ fontSize: '0.75rem', color: 'var(--cds-text-secondary)', marginBottom: '0.25rem' }}>
                 Total rep needed
               </p>
-              <strong style={{ fontSize: '1rem' }}>{totalRepNeeded(settings).toLocaleString()}</strong>
+              <strong style={{ fontSize: '2rem' }}>{totalRepNeeded(settings).toLocaleString()}</strong>
             </div>
           </div>
         </div>
