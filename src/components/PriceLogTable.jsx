@@ -101,7 +101,17 @@ export default function PriceLogTable({ entries, settings, onDelete }) {
                         </TableCell>
                       )
                     }
-                    return <TableCell key={cell.id}>{cell.value}</TableCell>
+                    const avgStyle =
+                      cell.info.header === 'mosAvg'
+                        ? { color: 'var(--cds-link-primary)', fontWeight: 600 }
+                        : cell.info.header === 'felArmAvg'
+                        ? { color: 'var(--cds-support-success)', fontWeight: 600 }
+                        : undefined
+                    return (
+                      <TableCell key={cell.id} style={avgStyle}>
+                        {cell.value}
+                      </TableCell>
+                    )
                   })}
                 </TableRow>
               ))}
